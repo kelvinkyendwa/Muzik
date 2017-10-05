@@ -1,0 +1,25 @@
+{% extends 'music/base.html' %}
+{% load staticfiles %}
+{% block title %} Songs {% endblock %}
+
+{% block content %}
+
+<h1 class="ui header">{{album.album_title}}</h1>
+<h3>By: {{album.artist}}</h3>
+
+<div class="ui grid">
+  <div class="four wide column"><img src="{{album.album_logo.url}}"  class="ui image"></div>
+  <div class="eight wide column">
+    <div class="ui divided items">
+      {% for song in album.song_set.all %}
+      <div class="item">{{song.song_title}}.{{song.file_type}}</div>
+
+      {% endfor %}
+    </div>
+  </div>
+
+
+
+<div>
+
+{% endblock %}

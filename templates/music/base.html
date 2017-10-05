@@ -1,0 +1,47 @@
+{% load staticfiles %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}Music {% endblock %}</title>
+    <link rel="stylesheet" href="{% static "semantic.min.css" %}">
+    <link rel="stylesheet" href="{% static "components/image.min.css" %}">
+
+    <!-- main styles -->
+    <link rel="stylesheet" href="{% static "main.css" %}">
+  </head>
+  <body>
+    <div class="ui container">
+<div class="ui secondary pointing menu">
+  <a class="item active" href="{% url 'music:index' %}">
+    Albums
+  </a>
+  <a class="item ">
+    Songs
+  </a>
+
+  <div class="right menu">
+    <a class="item" href="{% url 'music:album-add'%}">
+       + Add Album
+    </a>
+   <a class="ui item">
+     <i class="sign out icon"></i>
+     Logout
+   </a>
+ </div>
+</div>
+
+<div class="ui container">
+
+   {% block content %}
+   {% endblock %}
+</div>
+
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script src="{% static "semantic.min.js" %}" type="text/javascript">
+
+</script>
+  </body>
+</html>

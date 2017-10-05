@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Sue+Ellen+Francisco');
+
+.ui.secondary.pointing.menu {
+  font-family: 'Sue Ellen Francisco', cursive;
+  font-size: 1.5em;
+}
+.padbot {
+  padding-bottom: 45px;
+}

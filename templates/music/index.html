@@ -1,0 +1,54 @@
+{% extends 'music/base.html' %}
+{% load staticfiles %}
+{% block content %}
+<div class="item">
+  <div class="ui icon input">
+    <input type="text" placeholder="Search...">
+    <i class="search link icon"></i>
+  </div>
+</div>
+          <h1 class="ui header">My Albums</h1>
+          <br>
+      {% if all_albums %}
+
+      <div class="ui three column grid">
+
+          <div class="row">
+{% for album in all_albums %}
+              <div class="ui column">
+
+              <a href="{% url 'music:detail' album.id %}" class="ui medium image"><h3 class="ui header">{{album.album_title}}</h3>
+                <img src="{{album.album_logo.url}}" alt="" class="ui image">
+              </a>
+              <br><br><br>
+              <div class="ui divided grid padbot">
+                  <div class="row">
+                     <div class="six wide column">
+                       <a href="{% url 'music:detail' album.id %}" class="ui primary basic button">View Songs</a>
+                     </div>
+                     <div class="four wide column">
+                       <form class="inline" action="{% url 'music:album-delete' album.id %}" method="post">
+                         {% csrf_token %}
+
+                         <button class="ui inverted red button" type="submit">Delete</button>
+                       </form>
+
+                     </div>
+
+                  </div>
+              </div>
+
+
+            </div>
+  {% endfor %}
+          </div>
+          <br>  <br>  <br>
+
+      </div>
+
+      {% else %}
+      <h2>No albums<h2>
+      {% endif %}
+
+        </div>
+{% endblock %}
